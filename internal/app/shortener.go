@@ -11,19 +11,21 @@ type shortener struct {
 	repo repo.Shortener
 }
 
-func (s shortener) ShortUrl(url string) (hashUrl string) {
+func (s shortener) ShortUrl(url string) (hashUrl string, err error) {
 
+	if hashUrl = s.checkIfExist(url); hashUrl == "" {
+		hashUrl = s.hash64(url)
+		err = s.repo.Save(url, hashUrl)
+	}
 
-	if hashUrl :=
-
-	return ""
+	return
 }
 
 func (s shortener) CallUrl(shortUrl string) string {
 
 }
 
-func (s shortener) hash64(shortUrl string) string {
+func (s shortener) hash64(url string) string {
 
 }
 

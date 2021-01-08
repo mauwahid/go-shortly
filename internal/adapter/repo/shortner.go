@@ -1,6 +1,7 @@
 package repo
 
 type Shortener interface {
-	Save(longUrl string) (string, error)
-	Get(shortUrl string) (string, error)
+	Save(longUrl string, shortUrl string) error
+	GetByLongUrl(longUrl string) (string, error)
+	GetByShortUrl(shortUrl string) (string, error)
 }
